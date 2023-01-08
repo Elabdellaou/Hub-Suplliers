@@ -2204,6 +2204,10 @@
     display: flex;
     /* justify-content: center; */
   }
+  body{
+    width: 100vw;
+    overflow-x: hidden !important;
+  }
   .table-responsive>.table-bordered {
     border: 0;
   }

@@ -103,33 +103,21 @@
                     </div>
                     <div class="card-body">
                         <h5 class="font-weight-medium mb-3">Products</h5>
+                        <?php $total=0; ?>
+                        @foreach ($items as $item)
                         <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 1</p>
-                            <p>$150</p>
+                            <?php $total+=$item->quantity; ?>
+                            <p>{{ $item->name }}</p>
+                            <p>{{ $item->quantity }}</p>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 2</p>
-                            <p>$150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 3</p>
-                            <p>$150</p>
-                        </div>
+                        @endforeach
                         <hr class="mt-0">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">$150</h6>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">$10</h6>
+                            <h6 class="font-weight-medium">Total Of Packages</h6>
+                            <h6 class="font-weight-medium">{{ $total }}</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">$160</h5>
-                        </div>
                         <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Continue To
                             Shipping</button>
                     </div>

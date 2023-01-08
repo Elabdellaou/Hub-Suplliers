@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row border-top px-xl-5">
+    <div class="row border-top px-xl-5 flex-column-reverse flex-lg-row">
         <div class="col-lg-3">
             <a class="btn shadow-none collapsed d-flex align-items-center btn-drop text-white justify-content-between bg-primary w-100"
                 data-toggle="collapse" href="#categories" style="height: 65px; margin-top: -1px; padding: 0 30px;">

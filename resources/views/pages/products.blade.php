@@ -20,6 +20,12 @@
                     <div class="navbar-nav w-100 overflow-hidden px-2">
                         <div
                             class="custom-control py-2 nav-item custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" value="true" checked id="option-0">
+                            <label class="custom-control-label" for="option-0">All</label>
+                            <span class="badge border font-weight-normal">2000</span>
+                        </div>
+                        <div
+                            class="custom-control py-2 nav-item custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="option-1">
                             <label class="custom-control-label" for="option-1">Halal </label>
                             <span class="badge border font-weight-normal">1000</span>
@@ -34,7 +40,7 @@
                 </nav>
                 <!-- options End -->
                 <!-- Price Start -->
-                <a class="btn shadow-none d-flex collapsed btn-drop align-items-center mb-4 text-white justify-content-between bg-primary w-100"
+                {{-- <a class="btn shadow-none d-flex collapsed btn-drop align-items-center mb-4 text-white justify-content-between bg-primary w-100"
                     data-toggle="collapse" href="#price" style="height: 65px; margin-top: -1px; padding: 0 30px;">
                     <h6 class="m-0 text-white">Filter by Price</h6>
                     <i class="fa fa-angle-down"></i>
@@ -79,7 +85,7 @@
                                     <span class="badge border font-weight-normal">1000</span>
                         </div>
                     </div>
-                </nav>
+                </nav> --}}
                 <!-- Price End -->
                 <!-- discount Start -->
                 <a class="btn shadow-none btn-drop collapsed d-flex align-items-center mb-4 text-white justify-content-between bg-primary w-100"
@@ -90,6 +96,12 @@
                 <nav class="collapse navbar-drop position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
                     id="discount" style="width: calc(100% - 30px); z-index: 1000;">
                     <div class="navbar-nav w-100 overflow-hidden px-2">
+                        <div
+                            class="custom-control py-2 nav-item custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked value="true" id="all-discount">
+                            <label class="custom-control-label" for="all-discount">All </label>
+                            <span class="badge border font-weight-normal">4000</span>
+                        </div>
                         <div
                             class="custom-control py-2 nav-item custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="no-discount">
@@ -178,8 +190,8 @@
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
                                     <a class="dropdown-item" href="#">Latest</a>
-                                    <a class="dropdown-item" href="#">Ascending Price</a>
-                                    <a class="dropdown-item" href="#">decreasing price</a>
+                                    {{-- <a class="dropdown-item" href="#">Ascending Price</a>
+                                    <a class="dropdown-item" href="#">decreasing price</a> --}}
                                 </div>
                             </div>
                         </div>

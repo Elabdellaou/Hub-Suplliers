@@ -60,9 +60,9 @@
         </div>
         <div class="col-md-6 px-xl-0 text-center text-md-right">
             <div class="d-inline-flex align-items-center">
-                <a class="text px-2" target="_blank" href="">
+                {{-- <a class="text px-2" target="_blank" href="">
                     <i class="fab fa-facebook-f"></i>
-                </a>
+                </a> --}}
                 <a class="text px-2" target="_blank" href="">
                     <i class="fab fa-twitter"></i>
                 </a>
