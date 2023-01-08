@@ -34,6 +34,7 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // store demande to cart
     public function store(Request $request)
     {
         $product = Product::findOrFail($request->id);
@@ -45,7 +46,7 @@ class CartController extends Controller
             'attributes' => array(),
             'associatedModel' => $product
         ));
-        return response()->json(["count"=>\Cart::getContent()->count(),"status"=>200]);
+        return response()->json(["count"=>\Cart::getContent()->count()]);
     }
 
     /**
@@ -77,6 +78,7 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // update quantity of demande product
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
@@ -86,7 +88,7 @@ class CartController extends Controller
                 'value' => $request->qty
             ),
         ]);
-        return response()->json(["count"=>\Cart::getContent()->count(),"status"=>200]);
+        return response()->json(["count"=>\Cart::getContent()->count()]);
         // return response(\Cart::get($product->references),200);
     }
 
@@ -96,10 +98,11 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //delete demande to cart
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
         \Cart::remove($product->references);
-        return response()->json(["count"=>\Cart::getContent()->count(),"status"=>200]);
+        return response()->json(["count"=>\Cart::getContent()->count()]);
     }
 }

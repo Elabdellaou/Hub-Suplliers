@@ -11,7 +11,7 @@
             <div class="col-lg-3 col-md-12">
                 <!-- options Start -->
                 <a class="btn shadow-none collapsed d-flex mb-4 align-items-center btn-drop text-white justify-content-between bg-primary w-100"
-                    data-toggle="collapse" href="#options" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    data-toggle="collapse" href="#options" style="height: 65px; margin-top: -1px; padding: 0 30px;border-radius:5px;">
                     <h6 class="m-0 text-white">Options</h6>
                     <i class="fa fa-angle-down"></i>
                 </a>
@@ -173,14 +173,13 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
+                            <form action="{{ route("products.search") }}" method="post">
+                                @csrf
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
+                                    <input type="text" class="form-control" name="title" placeholder="Search By Title">
+                                    <button type="submit" class="input-group-text text-primary bg-transparent" style="outline: none">
                                             <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
+                                    </button>
                                 </div>
                             </form>
                             <div class="dropdown ml-4">

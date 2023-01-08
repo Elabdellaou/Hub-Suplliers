@@ -36,7 +36,7 @@
                 </a>
             </div>
             <div class="col-lg-6 col-sm-8 col-md-6 col-12 text-left">
-                <form action="{{ route("products.search") }}" method="post">
+                <form action="{{ route("products.search.all-attribute") }}" method="post">
                     @csrf
                     <div class="input-group">
                         <input type="text" class="form-control" name="title" placeholder="Search for products">
