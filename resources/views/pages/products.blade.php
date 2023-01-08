@@ -88,7 +88,7 @@
                 </nav> --}}
                 <!-- Price End -->
                 <!-- discount Start -->
-                <a class="btn shadow-none btn-drop collapsed d-flex align-items-center mb-4 text-white justify-content-between bg-primary w-100"
+                {{-- <a class="btn shadow-none btn-drop collapsed d-flex align-items-center mb-4 text-white justify-content-between bg-primary w-100"
                     data-toggle="collapse" href="#discount" style="height: 65px; margin-top: -1px; padding: 0 30px;">
                     <h6 class="m-0 text-white">Filter by Discount</h6>
                     <i class="fa fa-angle-down"></i>
@@ -133,7 +133,7 @@
                             <span class="badge border font-weight-normal">1000</span>
                         </div>
                     </div>
-                </nav>
+                </nav> --}}
                 <!-- discount End -->
                 <!-- brands Start -->
                 <div class="mb-4 filter-select">
