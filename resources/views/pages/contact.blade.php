@@ -35,7 +35,7 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
+                            <button class="btn btn-primary py-2 px-4" style="border-radius: 5px" type="submit" id="sendMessageButton">Send
                                 Message</button>
                         </div>
                     </form>
@@ -49,7 +49,7 @@
                 <div class="d-flex flex-column mb-3">
                     <h5 class="font-weight-semi-bold mb-3">Store</h5>
                     <div class="mb-2 d-flex">
-                        <i class="fa p-0 fa-map-marker-alt text-white d-flex justify-content-center align-items-center bg-primary"
+                        <i class="fa p-0 fa-map-marker-alt mt-1 text-white d-flex justify-content-center align-items-center bg-primary"
                             style="width: 44px;height: 44px;border-radius: 4px; min-width: 44px;min-height: 44px"></i>
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold">Address :</h6>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="mb-2 d-flex">
-                        <i class="fa fa-envelope text-white d-flex justify-content-center align-items-center bg-primary"
+                        <i class="fa fa-envelope text-white mt-1 d-flex justify-content-center align-items-center bg-primary"
                             style="width: 44px;height: 44px;border-radius: 4px;"></i>
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold">Email :</h6>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="mb-0 d-flex ">
-                        <i class="fa fa-phone-alt text-white d-flex justify-content-center align-items-center bg-primary"
+                        <i class="fa fa-phone-alt text-white mt-1 d-flex justify-content-center align-items-center bg-primary"
                             style="width: 44px;height: 44px;border-radius: 4px;"></i>
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold">Call :</h6>

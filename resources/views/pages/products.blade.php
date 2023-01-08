@@ -197,26 +197,28 @@
                         </div>
                     </div>
                     @foreach ($products as $product)
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1 mb-4">
-                        <div class="card product-item border-0 h-100">
-                            <div
-                                class="card-header product-img position-relative overflow-hidden bg-transparent border p-5">
-                                <img class="img-fluid w-100"
-                                    src="{{ Storage::url('img' . DIRECTORY_SEPARATOR . $product->image) }}" alt="{{ $product->title }}">
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <p class="text-center">By {{ $product->business }}</p>
-                                <p class="h6 px-2">{{ $product->title }}</p>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="{{ route("products.detail",[$product->title]) }}" class="btn btn-sm text-dark p-0"><i
-                                        class="fas fa-eye text-primary mr-1"></i>View
-                                    Detail</a>
-                                <a class="btn btn-sm text-dark p-0 btn-add-product" data-product="{{ $product->id }}"><i
-                                        class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1 mb-4">
+                            <div class="card product-item border-0 h-100">
+                                <div
+                                    class="card-header product-img position-relative overflow-hidden bg-transparent border p-5">
+                                    <img class="img-fluid w-100"
+                                        src="{{ Storage::url('img' . DIRECTORY_SEPARATOR . $product->image) }}"
+                                        alt="{{ $product->title }}">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <p class="text-center">By {{ $product->business }}</p>
+                                    <p class="h6 px-2">{{ $product->title }}</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="{{ route('products.detail', [$product->title]) }}"
+                                        class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
+                                        Detail</a>
+                                    <a class="btn btn-sm text-dark p-0 btn-add-product"
+                                        data-product="{{ $product->id }}"><i
+                                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                     <div class="col-12 pb-1 pagination justify-content-center">
                         {{ $products->links() }}
@@ -271,7 +273,7 @@
                 axios.post("/cart", {
                     "id": element.dataset.product,
                 }).then(response => {
-                    if(response.status == 200)
+                    if (response.status == 200)
                         $(".cart_count").text(response.data.count)
                 }).catch(errors => {
                     console.log(errors)

@@ -22,4 +22,8 @@ class ProductController extends Controller
         });
         return view("pages.product_detail",compact("product"));
     }
+    public function search(Request $req){
+        $products=Product::where('title', 'LIKE', "%{$req->title}%") ->simplePaginate(18);
+        return view("pages.products",compact("products"));
+    }
 }

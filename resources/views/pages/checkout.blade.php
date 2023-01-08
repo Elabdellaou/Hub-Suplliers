@@ -28,13 +28,13 @@
                             <input class="form-control" type="text" placeholder="+34 653 181 825">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Address Line 1</label>
+                            <label>Address</label>
                             <input class="form-control" type="text" placeholder="Fahs Anjra">
                         </div>
-                        <div class="col-md-6 form-group">
+                        {{-- <div class="col-md-6 form-group">
                             <label>Address Line 2</label>
                             <input class="form-control" type="text" placeholder="Fahs Anjra">
-                        </div>
+                        </div> --}}
                         <div class="col-md-6 form-group">
                             <label>Country</label>
                             <select class="custom-select select2">

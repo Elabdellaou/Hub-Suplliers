@@ -23,4 +23,5 @@ Route::get('/pages/cart', [App\Http\Controllers\CartController::class, 'index'])
 Route::get('/pages/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('pages.checkout');
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 Route::get('/products/{title}', [App\Http\Controllers\ProductController::class, 'show'])->name('products.detail');
+Route::post('/products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 Route::resources(["cart"=>CartController::class]);

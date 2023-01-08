@@ -36,9 +36,10 @@
                 </a>
             </div>
             <div class="col-lg-6 col-sm-8 col-md-6 col-12 text-left">
-                <form action="">
+                <form action="{{ route("products.search") }}" method="post">
+                    @csrf
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input type="text" class="form-control" name="title" placeholder="Search for products">
                         <div class="input-group-append">
                             <button type="submit" style="outline: none;"
                                 class="input-group-text bg-transparent text-primary">
