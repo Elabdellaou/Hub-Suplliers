@@ -4,10 +4,9 @@
             <img class="img-fluid" src="{{ Storage::url("img".DIRECTORY_SEPARATOR."brand.webp") }}" alt="Brands">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="">
-                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                        Order</h4>
-                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                    <a href="{{ route("products") }}" class="btn btn-light py-2 px-3">Shop Now</a>
+                    <h2 class="text-white text-uppercase font-weight-semi-bold mb-5">Make clear we sell to wholesalers and retailers</h2>
+                    {{-- <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3> --}}
+                    <a href="{{ route("products") }}" class="btn btn-light py-2 px-3" style="border-radius: 5px;">Shop Now</a>
                 </div>
             </div>
         </div>
@@ -15,10 +14,9 @@
             <img class="img-fluid" src="{{ Storage::url("img".DIRECTORY_SEPARATOR."Warehouse.jpg") }}" alt="Warehouse">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="">
-                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                        Order</h4>
-                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                    <a href="{{ route("products") }}" class="btn btn-light py-2 px-3">Shop Now</a>
+                    <h2 class="text-white text-uppercase font-weight-semi-bold mb-5">Make clear we sell to wholesalers and retailers</h2>
+                    {{-- <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3> --}}
+                    <a href="{{ route("products") }}" class="btn btn-light py-2 px-3" style="border-radius: 5px;">Shop Now</a>
                 </div>
             </div>
         </div>

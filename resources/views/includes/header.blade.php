@@ -64,9 +64,9 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg-left" style="z-index: 1030;" aria-labelledby="dropdownMenuButton">
                                 @auth
+                                <a class="dropdown-item" href="#">{{ Auth::user()->first_name }}
+                                    {{ Auth::user()->last_name }}</a>
                                     <a href="" class="dropdown-item">My Orders</a>
-                                    <a class="dropdown-item" href="#">{{ Auth::user()->first_name }}
-                                        {{ Auth::user()->last_name }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

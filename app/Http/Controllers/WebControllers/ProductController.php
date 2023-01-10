@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterProductRequest;
 use App\Http\Requests\SearchProductRequest;
 use App\Models\Product;
