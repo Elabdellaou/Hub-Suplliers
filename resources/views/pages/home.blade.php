@@ -75,7 +75,7 @@
                                 alt="{{ $product->title }}">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <p class="text-center">By {{ $product->business }}</p>
+                            <p class="text-center">By {{ $product->brand }}</p>
                             <p class="h6 px-2">{{ $product->title }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">

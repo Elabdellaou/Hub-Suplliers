@@ -9,18 +9,28 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="#" method="post">
+                <form action="{{ route("login") }}" method="post" id="login">
                     @csrf
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control @error("email") is-invalid @enderror" value="{{ old("email") }}" id="email" name="email" required>
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first("email") }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password">
+                        <input type="password" name="password" class="form-control @error("password") is-invalid @enderror" id="password" required>
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first("password") }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="remember_me" style="cursor:pointer">
+                        <input type="checkbox" class="form-check-input" id="remember_me" value="false" style="cursor:pointer">
                         <label class="form-check-label" for="remember_me" style="cursor:pointer">Remember me</label>
                     </div>
                     <a href="" class="">Forgot Password?</a>

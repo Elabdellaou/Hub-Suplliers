@@ -80,7 +80,10 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">{{ Cart::getTotal() }}Dh</h5>
                         </div> --}}
-                        <a href="{{ route("pages.checkout") }}" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+                        <button class="btn btn-block btn-primary my-3 py-3 btn-pass_demands" style="border-radius: 5px;">Pass Demands</button>
+                        <form class="d-none" method="post" action="{{ route("pass.demands") }}" id="form-pass_demands">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
@@ -157,5 +160,16 @@
             // $(".qty-text").text(newVal)
             // $(".total").text(parseFloat($(".unit-price").text())*newVal)
         });
+        $(".btn-pass_demands").on("click",()=>{
+            @if(count($items) == 0)
+                toastr.warning("No demands.")
+            @elseif (Auth::check())
+                if(confirm("Are you sure !"))
+                    $("#form-pass_demands").submit()
+            @else
+            toastr.warning("Please login or register.")
+                $(".btn-login").click()
+            @endif
+        })
     </script>
 @endpush

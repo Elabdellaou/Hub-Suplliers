@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class CommandDetail extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -16,12 +15,9 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'references',
-        'title',
-        'description',
-        'price',
-        'image',
-        'brand',
+        'command_id',
+        'product_id',
+        'qty',
     ];
 
     /**
@@ -31,14 +27,17 @@ class Product extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'price' => 'decimal:2',
+        'command_id' => 'integer',
+        'product_id' => 'integer',
     ];
 
-    public function commands()
+    public function command()
     {
-        return $this->belongsToMany(Commands::class,"commands_detail");
+        return $this->belongsTo(Command::class);
     }
-    public function images(){
-        return $this->hasMany(Image::class);
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

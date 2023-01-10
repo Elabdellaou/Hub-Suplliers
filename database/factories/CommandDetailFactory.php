@@ -4,16 +4,18 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Command;
+use App\Models\CommandDetail;
 use App\Models\Product;
 
-class ProductFactory extends Factory
+class CommandDetailFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Product::class;
+    protected $model = CommandDetail::class;
 
     /**
      * Define the model's default state.
@@ -23,12 +25,9 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'references' => $this->faker->word,
-            'title' => $this->faker->sentence(4),
-            'description' => $this->faker->text,
-            'price' => $this->faker->randomFloat(2, 0, 999999.99),
-            'image' => $this->faker->word,
-            'brand' => $this->faker->word,
+            'command_id' => Command::factory(),
+            'product_id' => Product::factory(),
+            'qty' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

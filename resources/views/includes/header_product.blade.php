@@ -46,13 +46,14 @@
                         <a href="{{ route('home') }}/#trading_areas" class="nav-item nav-link">Trading Areas</a>
                         <a href="{{ route('products') }}"
                             class="nav-item nav-link {{ Request::is('products*') ? 'active' : '' }}">Products</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="{{ route('pages.cart') }}" class="dropdown-item">Shopping Cart</a>
-                                <a href="{{ route('pages.checkout') }}" class="dropdown-item">Checkout</a>
-                            </div>
-                        </div>
+                            <a href="{{ route('pages.cart') }}" class="nav-item nav-link">Shopping Cart</a>
+                            {{-- <div class="nav-item dropdown"> --}}
+                                {{-- <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="{{ route('pages.checkout') }}" class="dropdown-item">Checkout</a>
+                                    <a href="{{ route('pages.cart') }}" class="dropdown-item">Shopping Cart</a>
+                            </div> --}}
+                        {{-- </div> --}}
                         <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
@@ -69,27 +70,28 @@
                             </div>
                         </div>
                         @guest
-                            <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
-                            <a href="#" class="nav-item nav-link" data-toggle="modal"
+                            <a href="#" class="nav-item nav-link btn-login" data-toggle="modal" data-target="#login">Login</a>
+                            <a href="#" class="nav-item nav-link btn-register" data-toggle="modal"
                                 data-target="#register">Register</a>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <div class="dropdown nav-item nav-link">
+                            <a class="dropdown-toggle text-decoration-none border-0"
+                                style="cursor: pointer; border: none; outline: none;" href="#"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                            </a>
+                            <div class="dropdown-menu" style="z-index: 1600;" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
                         @endguest
                     </div>
                 </div>

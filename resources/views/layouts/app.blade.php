@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -25,8 +25,8 @@
 
     {{-- Libraries Stylesheet  --}}
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" />
     {{-- Styles  --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -57,8 +57,48 @@
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     {{-- main script --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        @if ($errors->any())
+            @if ($errors->has('email') || $errors->has('password'))
+                $(".btn-login").click()
+            @else
+                $(".btn-register").click()
+            @endif
+        @endif
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        @if (Session::has('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if (Session::has('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+        @if (Session::has('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+        @if (Session::has('info'))
+            toastr.warning("{{ session('info') }}");
+        @endif
+    </script>
     @stack('scripts')
 </body>
 

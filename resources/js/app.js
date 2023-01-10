@@ -90,5 +90,7 @@ axios.defaults.headers.common = {
             },
         },
     });
-
+    $("#remember_me").on("change",e=>{
+        $("#remember_me").val(e.target.checked)
+    });
 })(jQuery);

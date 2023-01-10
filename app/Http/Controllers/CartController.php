@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreToCart;
+use App\Http\Requests\UpdateQuantityCart;
+use App\Models\Command;
+use App\Models\CommandDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -35,7 +39,7 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     // store demande to cart
-    public function store(Request $request)
+    public function store(StoreToCart $request)
     {
         $product = Product::findOrFail($request->id);
         \Cart::add(array(
@@ -79,7 +83,7 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     // update quantity of demande product
-    public function update(Request $request, $id)
+    public function update(UpdateQuantityCart $request, $id)
     {
         $product = Product::findOrFail($id);
         \Cart::update($product->references,[
@@ -104,5 +108,21 @@ class CartController extends Controller
         $product = Product::findOrFail($id);
         \Cart::remove($product->references);
         return response()->json(["count"=>\Cart::getContent()->count()]);
+    }
+    public function passDemands(Request $request){
+        $items=\Cart::getContent();
+        $command_id=Command::create(["user_id"=>$request->user()->id])->id;
+        if(count($items) == 0)
+            return redirect()->back()->with("warning","No demands.");
+
+        foreach ($items as $key => $item) {
+            CommandDetail::create([
+                'command_id'=>$command_id,
+                'product_id'=>$item->associatedModel->id,
+                'qty'=>$item->quantity
+            ]);
+            \Cart::remove($item->associatedModel->references);
+        }
+        return redirect()->back()->with("success","All demands have been passed.");
     }
 }

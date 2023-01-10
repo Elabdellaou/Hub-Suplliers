@@ -42,7 +42,7 @@
                 </div>
                 <div class="row">
                     <h5 class="font-weigh-semi-bold mb-4 col-6">Brand</h5>
-                    <h5 class="font-weigh-semi-bold mb-4 col-6">{{ $product->business }}</h5>
+                    <h5 class="font-weigh-semi-bold mb-4 col-6">{{ $product->brand }}</h5>
                 </div>
                 <div class="row">
                     <h5 class="font-weigh-semi-bold mb-4 col-6">Units</h5>
@@ -178,7 +178,7 @@
                                         alt="{{ $product->title }}">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <p class="text-center">By {{ $product->business }}</p>
+                                    <p class="text-center">By {{ $product->brand }}</p>
                                     <p class="h6 px-2">{{ Str::limit($product->title, 20, '...') }}</p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">

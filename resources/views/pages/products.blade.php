@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Header start --}}
-    @include('includes.header_product')
+    @include('includes.header')
     {{-- Header end --}}
     <!-- Shop Start -->
     <div class="container-fluid pt-4">
@@ -10,8 +10,9 @@
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
                 <!-- options Start -->
-                <a class="btn shadow-none collapsed d-flex mb-4 align-items-center btn-drop text-white justify-content-between bg-primary w-100"
-                    data-toggle="collapse" href="#options" style="height: 65px; margin-top: -1px; padding: 0 30px;border-radius:5px;">
+                {{-- <a class="btn shadow-none collapsed d-flex mb-4 align-items-center btn-drop text-white justify-content-between bg-primary w-100"
+                    data-toggle="collapse" href="#options"
+                    style="height: 65px; margin-top: -1px; padding: 0 30px;border-radius:5px;">
                     <h6 class="m-0 text-white">Options</h6>
                     <i class="fa fa-angle-down"></i>
                 </a>
@@ -37,7 +38,7 @@
                             <span class="badge border font-weight-normal">1000</span>
                         </div>
                     </div>
-                </nav>
+                </nav> --}}
                 <!-- options End -->
                 <!-- Price Start -->
                 {{-- <a class="btn shadow-none d-flex collapsed btn-drop align-items-center mb-4 text-white justify-content-between bg-primary w-100"
@@ -135,6 +136,23 @@
                     </div>
                 </nav> --}}
                 <!-- discount End -->
+                <!-- categorie Start -->
+                <div class="mb-4 filter-select">
+                    <h5 class="font-weight-semi-bold">Filter by Categorie</h5>
+                    <select name="brands" class="select2 custom-select" id="categorie">
+                        <option value="" selected>All</option>
+                        <option value="">Kettle</option>
+                        <option value="">Aptamil</option>
+                        <option value="">Oreo</option>
+                        <option value="">Quest</option>
+                        <option value="">Red Bull</option>
+                        <option value="">Solan</option>
+                        <option value="">Kellogg’s</option>
+                        <option value="">Bimo</option>
+                        <option value="">Lady Liberty</option>
+                    </select>
+                </div>
+                <!-- categorie End -->
                 <!-- brands Start -->
                 <div class="mb-4 filter-select">
                     <h5 class="font-weight-semi-bold">Filter by Brands</h5>
@@ -167,18 +185,18 @@
             </div>
             <!-- Shop Sidebar End -->
 
-
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-9 col-md-12 mt-4 pt-2">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="{{ route("products.search") }}" method="post">
+                            <form action="{{ route('products.search') }}" method="post">
                                 @csrf
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="title" placeholder="Search By Title">
-                                    <button type="submit" class="input-group-text text-primary bg-transparent" style="outline: none">
-                                            <i class="fa fa-search"></i>
+                                    <button type="submit" class="input-group-text text-primary bg-transparent"
+                                        style="outline: none">
+                                        <i class="fa fa-search"></i>
                                     </button>
                                 </div>
                             </form>
@@ -188,7 +206,11 @@
                                     Sort by
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Latest</a>
+                                    <a class="dropdown-item" href="#" data-sortAsc>Latest</a>
+                                    <a class="dropdown-item" href="#" data-sortDesc>Latest</a>
+                                    <a class="dropdown-item" href="#" data-shuffle>Shuffle</a>
+                                    {{-- <a class="dropdown-item" href="#" >Brands</a> --}}
+                                    {{-- <a class="dropdown-item" href="#" >Title</a> --}}
                                     {{-- <a class="dropdown-item" href="#">Ascending Price</a>
                                     <a class="dropdown-item" href="#">decreasing price</a> --}}
                                 </div>
@@ -205,7 +227,7 @@
                                         alt="{{ $product->title }}">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <p class="text-center">By {{ $product->business }}</p>
+                                    <p class="text-center">By {{ $product->brand }}</p>
                                     <p class="h6 px-2">{{ $product->title }}</p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">

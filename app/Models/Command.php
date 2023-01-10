@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Commande extends Model
+class Command extends Model
 {
     use HasFactory, SoftDeletes;
-    public $table="commandes";
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,10 +17,6 @@ class Commande extends Model
      */
     protected $fillable = [
         'user_id',
-        'product_id',
-        'qty',
-        'price',
-        'total',
         'delivered',
     ];
 
@@ -32,9 +28,6 @@ class Commande extends Model
     protected $casts = [
         'id' => 'integer',
         'user_id' => 'integer',
-        'product_id' => 'integer',
-        'price' => 'decimal:2',
-        'total' => 'decimal:2',
         'delivered' => 'boolean',
     ];
 
@@ -42,9 +35,8 @@ class Commande extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function product()
+    public function commands()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class,"commands_detail");
     }
 }

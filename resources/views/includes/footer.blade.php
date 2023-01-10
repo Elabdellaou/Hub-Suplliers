@@ -26,8 +26,8 @@
                                 class="fa fa-angle-right mr-2"></i>Products</a>
                         <a class="text-dark mb-2" href="{{ route("pages.cart") }}"><i class="fa fa-angle-right mr-2"></i>Shopping
                             Cart</a>
-                        <a class="text-dark mb-2" href="{{ route("pages.checkout") }}"><i
-                                class="fa fa-angle-right mr-2"></i>Checkout</a>
+                        {{-- <a class="text-dark mb-2" href="{{ route("pages.checkout") }}"><i
+                                class="fa fa-angle-right mr-2"></i>Checkout</a> --}}
                         <a class="text-dark" href="{{ route("contact") }}"><i class="fa fa-angle-right mr-2"></i>Contact
                             Us</a>
                     </div>
@@ -44,7 +44,7 @@
                                 required="required" />
                         </div>
                         <div>
-                            <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe
+                            <button class="btn btn-primary btn-block border-0 py-3" style="border-radius: 5px;" type="submit">Subscribe
                                 Now</button>
                         </div>
                     </form>

@@ -4,16 +4,14 @@
                 <div class="d-inline-flex pl-2 align-items-center">
                     <a class="" href="">FAQs</a>
                     <span class="text-muted px-2">|</span>
-                    <a class="" href="">Help</a>
-                    <span class="text-muted px-2">|</span>
                     <a class="" href="">Support</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text px-2" target="_blank" href="">
+                    {{-- <a class="text px-2" target="_blank" href="">
                         <i class="fab fa-facebook-f"></i>
-                    </a>
+                    </a> --}}
                     <a class="text px-2" target="_blank" href="">
                         <i class="fab fa-twitter"></i>
                     </a>
@@ -29,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="row align-items-center flex-column-reverse flex-sm-row  py-3 px-xl-5">
+        {{-- <div class="row align-items-center flex-column-reverse flex-sm-row py-2 py-lg-0 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="" class="text-decoration-none">
                     <h1 class="m-0 display-5 "><img width="70%" style="object-fit: contain;" src="{{ Storage::url("img".DIRECTORY_SEPARATOR."LOGO.webp") }}" alt="" srcset=""></h1>
@@ -54,10 +52,10 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a> --}}
-                <a href="{{ route("pages.cart") }}" class="btn border">
+                {{-- <a href="{{ route("pages.cart") }}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge cart_count">{{ Cart::getContent()->count() }}</span>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>
