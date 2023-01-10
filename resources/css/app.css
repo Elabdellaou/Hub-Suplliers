@@ -4529,7 +4529,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem 1rem; */
   }
 
   .navbar .container,
@@ -4726,8 +4726,8 @@
       padding-left: 0;
     }
   }
-
-  @media (min-width: 992px) {
+/* 992 */
+  @media (min-width: 1080px) {
     .navbar-expand-lg {
       flex-flow: row nowrap;
       justify-content: flex-start;
@@ -4735,7 +4735,7 @@
 
     .navbar-expand-lg .navbar-nav {
       flex-direction: row;
-    } */
+    }
 
     .navbar-expand-lg .navbar-nav .dropdown-menu {
       position: absolute;

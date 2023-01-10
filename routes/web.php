@@ -27,5 +27,7 @@ Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']
 Route::get('/products/{title}', [App\Http\Controllers\ProductController::class, 'show'])->name('products.detail');
 Route::post('/products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 Route::post('/products/all_attribute', [App\Http\Controllers\ProductController::class, 'searchByAllAttribute'])->name('products.search.all-attribute');
+Route::post('/products/filter', [App\Http\Controllers\ProductController::class, 'filter'])->name('products.filter');
+Route::get('/products/sort/{sort}', [App\Http\Controllers\ProductController::class, 'sort'])->name('products.sort');
 Route::post('/pass_demands', [App\Http\Controllers\CartController::class, 'passDemands'])->name('pass.demands');
 Route::resources(["cart"=>CartController::class]);

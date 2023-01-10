@@ -8,7 +8,8 @@
     <div class="container-fluid pt-4">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
-            <div class="col-lg-3 col-md-12">
+            <form action="{{ route("products.filter") }}" method="POST" class="col-lg-3 col-md-12 form-filter">
+                @csrf
                 <!-- options Start -->
                 {{-- <a class="btn shadow-none collapsed d-flex mb-4 align-items-center btn-drop text-white justify-content-between bg-primary w-100"
                     data-toggle="collapse" href="#options"
@@ -138,35 +139,26 @@
                 <!-- discount End -->
                 <!-- categorie Start -->
                 <div class="mb-4 filter-select">
-                    <h5 class="font-weight-semi-bold">Filter by Categorie</h5>
-                    <select name="brands" class="select2 custom-select" id="categorie">
+                    <h5 class="font-weight-semi-bold">Filter by Categories</h5>
+                    <select name="category" class="select2 custom-select" id="categorie">
                         <option value="" selected>All</option>
-                        <option value="">Kettle</option>
-                        <option value="">Aptamil</option>
-                        <option value="">Oreo</option>
-                        <option value="">Quest</option>
-                        <option value="">Red Bull</option>
-                        <option value="">Solan</option>
-                        <option value="">Kellogg’s</option>
-                        <option value="">Bimo</option>
-                        <option value="">Lady Liberty</option>
                     </select>
                 </div>
                 <!-- categorie End -->
                 <!-- brands Start -->
                 <div class="mb-4 filter-select">
                     <h5 class="font-weight-semi-bold">Filter by Brands</h5>
-                    <select name="brands" class="select2 custom-select" id="brands">
-                        <option value="" selected>All</option>
-                        <option value="">Kettle</option>
-                        <option value="">Aptamil</option>
-                        <option value="">Oreo</option>
-                        <option value="">Quest</option>
-                        <option value="">Red Bull</option>
-                        <option value="">Solan</option>
-                        <option value="">Kellogg’s</option>
-                        <option value="">Bimo</option>
-                        <option value="">Lady Liberty</option>
+                    <select name="brand" class="select2 custom-select" id="brands">
+                        <option value="" {{ !isset($brand)||$brand == ""?"selected":""}}>All</option>
+                        <option value="Kettle" {{ isset($brand)&&$brand == "Kettle"?"selected":""}}>Kettle</option>
+                        <option value="Aptamil" {{ isset($brand)&&$brand == "Aptamil"?"selected":""}}>Aptamil</option>
+                        <option value="Oreo" {{ isset($brand)&&$brand == "Oreo"?"selected":""}}>Oreo</option>
+                        <option value="Quest" {{ isset($brand)&&$brand == "Quest"?"selected":""}}>Quest</option>
+                        <option value="Red Bull" {{ isset($brand)&&$brand == "Red Bull"?"selected":""}}>Red Bull</option>
+                        <option value="Solan" {{ isset($brand)&&$brand == "Solan"?"selected":""}}>Solan</option>
+                        <option value="Kellogg’s" {{ isset($brand)&&$brand == "Kellogg’s"?"selected":""}}>Kellogg’s</option>
+                        <option value="Bimo" {{ isset($brand)&&$brand == "Bimo"?"selected":""}}>Bimo</option>
+                        <option value="Lady Liberty" {{ isset($brand)&&$brand == "Lady Liberty"?"selected":""}}>Lady Liberty</option>
                     </select>
                 </div>
                 <!-- brands End -->
@@ -174,15 +166,16 @@
                 <!-- country origin Start -->
                 <div class="mb-4 filter-select">
                     <h5 class="font-weight-semi-bold">Filter by Country Origin</h5>
-                    <select name="country" class="select2 custom-select" id="country">
+                    <select name="country_origin" class="select2 custom-select" id="country">
                         <option value="" selected>All</option>
-                        <option value="">Morocco</option>
-                        <option value="">Algeria</option>
-                        <option value="">France</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="France">France</option>
                     </select>
                 </div>
                 <!-- country origin End -->
-            </div>
+                <input type="hidden" name="sort" id="input-sort">
+            </form>
             <!-- Shop Sidebar End -->
 
             <!-- Shop Product Start -->
@@ -190,10 +183,10 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="{{ route('products.search') }}" method="post">
+                            <form action="{{ route("products.search.all-attribute") }}" method="post">
                                 @csrf
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="title" placeholder="Search By Title">
+                                    <input type="text" class="form-control" name="title" placeholder="Search Product">
                                     <button type="submit" class="input-group-text text-primary bg-transparent"
                                         style="outline: none">
                                         <i class="fa fa-search"></i>
@@ -205,10 +198,10 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sort by
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#" data-sortAsc>Latest</a>
-                                    <a class="dropdown-item" href="#" data-sortDesc>Latest</a>
-                                    <a class="dropdown-item" href="#" data-shuffle>Shuffle</a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-sort" aria-labelledby="triggerId">
+                                    <button class="dropdown-item" data-sort="asc">Latest</button>
+                                    <button class="dropdown-item" data-sort="desc">descending</button>
+                                    <button class="dropdown-item" data-sort="">Shuffle</button>
                                     {{-- <a class="dropdown-item" href="#" >Brands</a> --}}
                                     {{-- <a class="dropdown-item" href="#" >Title</a> --}}
                                     {{-- <a class="dropdown-item" href="#">Ascending Price</a>
@@ -301,5 +294,12 @@
                 });
             })
         });
+        $(".filter-select").on("change",()=>{
+            $(".form-filter").submit();
+        })
+        $(".dropdown-sort button").on("click",()=>{
+            $("#input-sort").val($(this).data("sort"));
+            $(".form-filter").submit();
+        })
     </script>
 @endpush

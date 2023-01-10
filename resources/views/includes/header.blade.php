@@ -1,4 +1,4 @@
-<div class="container-fluid position-sticky bg-white" style="top: 0%;z-index:1600;">
+<div class="container-fluid position-sticky bg-white" style="top: 0%;z-index:1040;">
     <div class="row border-top border-bottom px-xl-5">
         <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg bg-light navbar-light px-0">

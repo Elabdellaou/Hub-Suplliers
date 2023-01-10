@@ -45,12 +45,16 @@
                     <h5 class="font-weigh-semi-bold mb-4 col-6">{{ $product->brand }}</h5>
                 </div>
                 <div class="row">
-                    <h5 class="font-weigh-semi-bold mb-4 col-6">Units</h5>
-                    <h5 class="font-weigh-semi-bold mb-4 col-6">1200.0 gram</h5>
+                    <h5 class="font-weigh-semi-bold mb-4 col-6">Number pieces in packaging</h5>
+                    <h5 class="font-weigh-semi-bold mb-4 col-6" id="pieces_packaging">1</h5>
                 </div>
                 <div class="row">
-                    <h5 class="font-weigh-semi-bold mb-4 col-6">Number of Items</h5>
-                    <h5 class="font-weigh-semi-bold mb-4 col-6">1</h5>
+                    <h5 class="font-weigh-semi-bold mb-4 col-6">Number of cases on the pallet</h5>
+                    <h5 class="font-weigh-semi-bold mb-4 col-6" id="cases">4</h5>
+                </div>
+                <div class="row">
+                    <h5 class="font-weigh-semi-bold mb-4 col-6">Number of pieces on the pallet</h5>
+                    <h5 class="font-weigh-semi-bold mb-4 col-6" id="pieces">20</h5>
                 </div>
                 {{-- <div class="row">
                         <h5 class="font-weight-semi-bold mb-4 col-6">Unit Price</h5>
@@ -61,10 +65,11 @@
                             <span>Dh</span></h5>
                     </div> --}}
                 <div class="row">
-                    <h5 class="font-weight-semi-bold mb-4 col-6">Quantity</h5>
+                    <h5 class="font-weight-semi-bold mb-4 col-6">Quantity of packaging</h5>
+                    <h5 class="font-weight-semi-bold mb-4 col-6" id="qty_packaging">1</h5>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;" data-product="{{ $product->id }}">
+                    <div class="input-group quantity mr-3" style="width: 130px;" data-product="{{ $product->id }}" data-pieces_packaging="1" data-cases="4" data-pieces="20">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-minus">
                                 <i class="fa fa-minus"></i>
@@ -216,7 +221,10 @@
         $(".quantity button").on("click", function() {
             var button = $(this);
             var oldValue = button.parent().parent().find("input").val();
-            var newVal = parseFloat(oldValue);
+            var  pieces_packaging= parseInt(button.parent().parent().data("pieces_packaging"));
+            var  pieces= parseInt(button.parent().parent().data("pieces"));
+            var  cases= parseInt(button.parent().parent().data("cases"));
+            var newVal = parseInt(oldValue);
             // var newTotal=parseInt($(".total_count").text());
             if (button.hasClass("btn-plus")) {
                 newVal++;
@@ -231,7 +239,10 @@
             }
             button.parent().parent().find("input").val(newVal);
             // $(".total_count").text(newTotal)
-            // $(".qty-text").text(newVal)
+            $("#qty_packaging").text(newVal)
+            $("#pieces_packaging").text(pieces_packaging*newVal)
+            $("#pieces").text(pieces*newVal)
+            $("#cases").text(cases*newVal)
             // $(".total").text(parseFloat($(".unit-price").text())*newVal)
         });
     </script>
