@@ -33,7 +33,7 @@
                         <input type="checkbox" class="form-check-input" id="remember_me" value="false" style="cursor:pointer">
                         <label class="form-check-label" for="remember_me" style="cursor:pointer">Remember me</label>
                     </div>
-                    <a href="" class="">Forgot Password?</a>
+                    <a href="{{ route("password.request") }}" class="">Forgot Password?</a>
                     <button type="submit" class="btn btn-primary border-0 w-100 mb-2 mt-3"
                         style="outline: none;">Sign in</button>
                 </form>

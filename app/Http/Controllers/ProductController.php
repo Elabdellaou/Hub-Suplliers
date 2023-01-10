@@ -39,6 +39,7 @@ class ProductController extends Controller
         return view("pages.products", compact("products"));
     }
     //search product by all attribute
+    // public function searchByAllAttribute($title)
     public function searchByAllAttribute(SearchProductRequest $req)
     {
         $products = Product::where('title', 'LIKE', "%{$req->title}%")
@@ -49,6 +50,7 @@ class ProductController extends Controller
         if ($products === NULL)
             abort(404);
         return view("pages.products", compact("products"));
+        // return response()->json($products);
     }
     //Filtering product by categories||brands||country origin
     public function filter(FilterProductRequest $req)

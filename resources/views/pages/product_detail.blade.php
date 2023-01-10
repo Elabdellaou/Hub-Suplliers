@@ -88,7 +88,7 @@
                         Add To Cart
                     </button>
                 </div>
-                <p class="mb-4">{{ $product->description }}</p>
+                {{-- <p class="mb-4">{{ $product->description }}</p> --}}
                 {{-- <div class="row">
                         <h5 class="font-weight-semi-bold mb-4 col-6">Quantity</h5>
                         <h5 class="font-weight-semi-bold mb-4 col-6 qty-text">1</h5>
@@ -190,8 +190,8 @@
                                     <a href="{{ route('products.detail', [$product->title]) }}"
                                         class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
                                         Detail</a>
-                                    <a href="" class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    <button class="btn btn-sm text-dark p-0 btn-add-product" data-product="{{ $product->id }}"><i
+                                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -204,6 +204,22 @@
 @endsection
 @push('scripts')
     <script>
+                btns_add_to_cart = document.querySelectorAll(".btn-add-product");
+        btns_add_to_cart.forEach(element => {
+            element.addEventListener("click", e => {
+                e.preventDefault();
+                axios.post("/cart", {
+                    "id": element.dataset.product,
+                }).then(response => {
+                    if(response.status == 200){
+                        $(".cart_count").text(response.data.count)
+                        toastr.success("Demande successfully.");
+                    }
+                }).catch(errors => {
+                    console.log(errors)
+                });
+            })
+        });
         $(".btn_store").on("click", () => {
             var id = $(".btn_store").parent().find(".quantity").data("product");
             var qty = $(".btn_store").parent().find(".quantity #qty").val();
@@ -211,8 +227,10 @@
                 "id": id,
                 "qty": qty
             }).then(response => {
-                if (response.status == 200)
+                if (response.status == 200){
                     $(".cart_count").text(response.data.count)
+                    toastr.success("Demande successfully.");
+                }
             }).catch(errors => {
                 console.log(errors)
             });

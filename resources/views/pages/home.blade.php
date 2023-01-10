@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                <div class="d-flex align-items-center border" style="padding: 30px;">
                     <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
                     <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
                 </div>
@@ -38,7 +38,7 @@
     </div>
     {{-- Featured End --}}
     {{-- trading_areas --}}
-    <section id="trading_areas" class="w-100">
+    <section id="trading_areas" class="w-100" >
         <div class="panel text-white px-3 pb-2" style="">
             <div class="d-flex justify-content-center flex-column">
                 <span class="h2 text-center my-4 text-white">OUR ACTIVITY</span>
@@ -110,8 +110,10 @@
                 axios.post("/cart", {
                     "id": element.dataset.product,
                 }).then(response => {
-                    if(response.status == 200)
+                    if(response.status == 200){
                         $(".cart_count").text(response.data.count)
+                        toastr.success("Demande successfully.");
+                    }
                 }).catch(errors => {
                     console.log(errors)
                 });

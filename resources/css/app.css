@@ -133,7 +133,10 @@
     margin-bottom: .5rem;
     margin-left: 0;
   }
-
+  .swal2-actions{
+    margin-top: 0% !important;
+    align-items: flex-end;
+  }
   blockquote {
     margin: 0 0 1rem;
   }
@@ -288,7 +291,7 @@
     word-wrap: normal;
   }
   #menu_language{
-    left:-50% !important;
+    left:-100% !important;
   }
   button,
   [type="button"],
@@ -681,9 +684,9 @@
     }
 
     #trading_areas .panel {
-      z-index: 1500;
+      z-index: 1030;
       position: absolute;
-      top: 0;
+      /* top: 0; */
       left: 50%;
       transform: translateX(-50%);
       background-color: rgba(0, 48, 91, 0.65);
@@ -3594,7 +3597,7 @@
   @media (min-width: 992px) {
     .dropdown-menu-lg-left {
       right: auto;
-      left: -350%;
+      left: -365%;
     }
 
     .dropdown-menu-lg-right {

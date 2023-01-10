@@ -183,10 +183,10 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="{{ route("products.search.all-attribute") }}" method="post">
+                            <form action="{{ route("products.search") }}" method="post">
                                 @csrf
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="title" placeholder="Search Product">
+                                    <input type="text" class="form-control" name="title" placeholder="Search By Name">
                                     <button type="submit" class="input-group-text text-primary bg-transparent"
                                         style="outline: none">
                                         <i class="fa fa-search"></i>
@@ -287,8 +287,10 @@
                 axios.post("/cart", {
                     "id": element.dataset.product,
                 }).then(response => {
-                    if (response.status == 200)
+                    if (response.status == 200){
                         $(".cart_count").text(response.data.count)
+                        toastr.success("Demande successfully.");
+                    }
                 }).catch(errors => {
                     console.log(errors)
                 });

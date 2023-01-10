@@ -47,6 +47,9 @@
     {{-- Modal Register start --}}
     @include('includes.modal_register')
     {{-- Modal Register end --}}
+    {{-- Modal search start --}}
+    {{-- @include("includes.modal_search") --}}
+    {{-- Modal search end --}}
     {{-- Back to Top  --}}
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
     {{-- JavaScript Libraries --}}
@@ -58,9 +61,18 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- main script --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script>
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
         @if ($errors->any())
             @if ($errors->has('email') || $errors->has('password'))
                 $(".btn-login").click()
@@ -98,6 +110,17 @@
         @if (Session::has('info'))
             toastr.warning("{{ session('info') }}");
         @endif
+
+        // $("#search-modal").on("keyup",()=>{
+        //     axios.get("/products/all_attribute/"+$("#search-modal").val()).then(response=>{
+        //         $("result").html("")
+        //         response.data.forEach(element => {
+        //             console.log(element.title)
+        //         });
+        //     }).catch(errors=>{
+        //         console.log(errors)
+        //     })
+        // })
     </script>
     @stack('scripts')
 </body>

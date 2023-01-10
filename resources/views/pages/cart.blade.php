@@ -51,7 +51,7 @@
                                 </td>
                                 {{-- <td class="align-middle">{{ $item->quantity*$item->price }}Dh</td> --}}
                                 <td class="align-middle">
-                                    <button class="btn btn-sm btn-primary btn_delete">
+                                    <button class="btn btn-sm btn-danger btn_delete">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
@@ -80,8 +80,9 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">{{ Cart::getTotal() }}Dh</h5>
                         </div> --}}
-                        <button class="btn btn-block btn-primary my-3 py-3 btn-pass_demands" style="border-radius: 5px;">Pass Demands</button>
-                        <form class="d-none" method="post" action="{{ route("pass.demands") }}" id="form-pass_demands">
+                        <button class="btn btn-block btn-primary my-3 py-3 btn-pass_demands"
+                            style="border-radius: 5px;">Pass Demands</button>
+                        <form class="d-none" method="post" action="{{ route('pass.demands') }}" id="form-pass_demands">
                             @csrf
                         </form>
                     </div>
@@ -160,15 +161,29 @@
             // $(".qty-text").text(newVal)
             // $(".total").text(parseFloat($(".unit-price").text())*newVal)
         });
-        $(".btn-pass_demands").on("click",()=>{
-            @if(count($items) == 0)
+        $(".btn-pass_demands").on("click", () => {
+            @if(!Auth::check())
+                toastr.warning("Please login or register.")
+                    $(".btn-login").click()
+            @elseif (count($items) == 0)
                 toastr.warning("No demands.")
-            @elseif (Auth::check())
-                if(confirm("Are you sure !"))
-                    $("#form-pass_demands").submit()
             @else
-            toastr.warning("Please login or register.")
-                $(".btn-login").click()
+                Swal.fire({
+                    title: 'Are you sure?',
+                    // text: "You won't be able to revert this!",
+                    // icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    padding: '2em',
+                    // reverseButtons: true,
+                    confirmButtonText: 'Yes, pass demands',
+                    cancelButtonText: 'No, cancel',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#form-pass_demands").submit()
+                    }
+                })
             @endif
         })
     </script>
