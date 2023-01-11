@@ -1,7 +1,7 @@
 <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
     <div class="row px-xl-5 ">
         <div class="col-md-4 col-sm-6 col-12  mb-lg-5 mb-2 pr-3 pr-xl-5 pt-4 pt-xl-3">
-            <a href="" class="text-decoration-none">
+            <a href="{{ route("home") }}" class="text-decoration-none">
                 <h1 class="m-0 display-5 "><img src="{{ Storage::url("img".DIRECTORY_SEPARATOR."LOGO.webp") }}" width="70%" style="object-fit: contain;"
                         alt="" srcset=""></h1>
             </a>
