@@ -291,7 +291,7 @@
     word-wrap: normal;
   }
   #menu_language{
-    left:-100% !important;
+    left:-50% !important;
   }
   button,
   [type="button"],

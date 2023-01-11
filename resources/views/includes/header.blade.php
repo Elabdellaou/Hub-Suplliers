@@ -66,7 +66,7 @@
                                 @auth
                                 <a class="dropdown-item" href="#">{{ Auth::user()->first_name }}
                                     {{ Auth::user()->last_name }}</a>
-                                    <a href="" class="dropdown-item">My Orders</a>
+                                    <a href="" class="dropdown-item">My orders</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

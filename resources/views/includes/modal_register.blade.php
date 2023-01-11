@@ -40,6 +40,15 @@ aria-hidden="true">
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" class="form-control @error('phone') is-invalid @enderror " value="{{ old("phone") }}" id="phone" name="phone" required>
+                    @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first("phone") }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="email" class="form-control @error('register_email') is-invalid @enderror " value="{{ old("register_email") }}" id="email" name="register_email" required>
                     @error('register_email')
