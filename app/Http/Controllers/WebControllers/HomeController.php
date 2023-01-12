@@ -38,7 +38,7 @@ class HomeController extends Controller
         $user = auth()->user();
         if (count(User::where("id", "<>", $user->id)->where("email", $req->email)->get()) != 0)
             return redirect()->back()->with("error", "Email already exist.");
-        $data=['first_name'=>$req->first_name,'last_name'=>$req->last_name,'email'=>$req->email,'phone'=>$req->phone];
+        $data=['first_name'=>$req->first_name,'company'=>$req->company,'last_name'=>$req->last_name,'email'=>$req->email,'phone'=>$req->phone];
         if ($req->password !== null)
             $data["password"]=Hash::make($req->password);
         $user->update($data);

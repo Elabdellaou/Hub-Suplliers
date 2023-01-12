@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card border" style="border-radius: 7px;">
                     <div class="card-header bg-primary text-white"
-                        style="border-top-left-radius: 7px;border-top-right-radius:7px;"><span>Profile</span>
+                        style="border-top-left-radius: 7px;border-top-right-radius:7px;">My Profile
                         {{-- <p id="mode" class="text-white" style="cursor: pointer;">
                             <i class="far fa-edit" title="Edit"></i>
                             <i class="fas fa-times d-none" title="Close"></i>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary border-0 mb-2 mt-3"
-                                style="outline: none;border-radius:5px;">save</button>
+                                style="outline: none;border-radius:5px;">Save</button>
                             </div>
                         </form>
                     </div>
