@@ -27,6 +27,7 @@
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     {{-- Styles  --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -62,6 +63,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     {{-- main script --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script>
@@ -80,35 +82,51 @@
                 $(".btn-register").click()
             @endif
         @endif
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
+        // toastr.options = {
+        //     "closeButton": true,
+        //     "debug": false,
+        //     "newestOnTop": false,
+        //     "progressBar": true,
+        //     "positionClass": "toast-top-right",
+        //     "preventDuplicates": false,
+        //     "onclick": null,
+        //     "showDuration": "300",
+        //     "hideDuration": "1000",
+        //     "timeOut": "5000",
+        //     "extendedTimeOut": "1000",
+        //     "showEasing": "swing",
+        //     "hideEasing": "linear",
+        //     "showMethod": "fadeIn",
+        //     "hideMethod": "fadeOut"
+        // }
         @if (Session::has('success'))
-            toastr.success("{{ session('success') }}");
+            Swal.fire(
+               { icon:'success',
+                title:"{{ session('success') }}",}
+            )
+            // toastr.success("{{ session('success') }}");
         @endif
 
         @if (Session::has('error'))
-            toastr.error("{{ session('error') }}");
+            Swal.fire(
+                {icon:'error',
+                title:"{{ session('error') }}",}
+            )
+            // toastr.error("{{ session('error') }}");
         @endif
         @if (Session::has('warning'))
-            toastr.warning("{{ session('warning') }}");
+            Swal.fire(
+                {icon:'warning',
+                title:"{{ session('warning') }}",}
+            )
+            // toastr.warning("{{ session('warning') }}");
         @endif
         @if (Session::has('info'))
-            toastr.warning("{{ session('info') }}");
+            Swal.fire(
+                {icon:'info',
+                title:"{{ session('info') }}",}
+            )
+            // toastr.warning("{{ session('info') }}");
         @endif
 
         // $("#search-modal").on("keyup",()=>{

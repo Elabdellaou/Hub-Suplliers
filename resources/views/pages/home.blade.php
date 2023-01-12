@@ -38,7 +38,7 @@
     </div>
     {{-- Featured End --}}
     {{-- trading_areas --}}
-    <section id="trading_areas" class="w-100" >
+    <section id="trading_areas" class="w-100">
         <div class="panel text-white px-3 pb-2" style="">
             <div class="d-flex justify-content-center flex-column">
                 <span class="h2 text-center my-4 text-white">OUR ACTIVITY</span>
@@ -110,9 +110,15 @@
                 axios.post("/cart", {
                     "id": element.dataset.product,
                 }).then(response => {
-                    if(response.status == 200){
-                        $(".cart_count").text(response.data.count)
-                        toastr.success("Demande successfully.");
+                    if (response.status == 200) {
+                        $(".cart_count").text(response.data.count) {
+                            Swal.fire(
+                                {icon:'success',
+                                title:"Demande successfully.",}
+                            )
+                        }
+
+                        // toastr.success("Demande successfully.");
                     }
                 }).catch(errors => {
                     console.log(errors)

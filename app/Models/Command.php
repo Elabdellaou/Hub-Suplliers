@@ -35,8 +35,8 @@ class Command extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function commands()
+    public function details()
     {
-        return $this->belongsToMany(Product::class,"commands_detail");
+        return $this->hasMany(CommandDetail::class);
     }
 }

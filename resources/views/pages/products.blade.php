@@ -289,7 +289,11 @@
                 }).then(response => {
                     if (response.status == 200){
                         $(".cart_count").text(response.data.count)
-                        toastr.success("Demande successfully.");
+                        Swal.fire(
+                                {icon:'success',
+                                title:"Demande successfully.",}
+                            )
+                        // toastr.success("Demande successfully.");
                     }
                 }).catch(errors => {
                     console.log(errors)

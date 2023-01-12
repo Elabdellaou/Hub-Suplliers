@@ -117,7 +117,16 @@
     margin-top: 0;
     margin-bottom: 1rem;
   }
-
+  .dataTables_paginate .paginate_button:hover,.dataTables_paginate .paginate_button.disabled:hover{
+    background: var(--primary) !important;
+    color:#fff !important;
+  }
+  .paginate_button.current {
+    border: 1px solid #EDF1FF !important;
+    background: transparent !important;
+    outline: none !important;
+    color: var(--primary) !important;
+  }
   ol ol,
   ul ul,
   ol ul,
@@ -135,7 +144,10 @@
   }
   .swal2-actions{
     margin-top: 0% !important;
-    align-items: flex-end;
+    align-items: flex-end !important;
+  }
+  .swal2-actions button{
+    box-shadow: none !important;
   }
   blockquote {
     margin: 0 0 1rem;
@@ -289,9 +301,6 @@
 
   select {
     word-wrap: normal;
-  }
-  #menu_language{
-    left:-50% !important;
   }
   button,
   [type="button"],
@@ -679,6 +688,9 @@
   }
 
   @media (min-width: 992px) {
+    #menu_language{
+        left:-50% !important;
+      }
     #trading_areas {
       position: relative;
     }
@@ -2170,6 +2182,13 @@
   }
 
   @media (max-width: 991.98px) {
+    /* .navbar-nav{
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+    .navbar-collapse.collapse{
+        flex-direction: row !important;
+    } */
     .table-responsive-lg {
       display: block;
       width: 100%;
@@ -10750,11 +10769,43 @@
   .navbar-light .navbar-nav .nav-link.active {
     color: var(--primary);
   }
-
-  @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link {
-      padding: 5px 0px;
+  @media (max-width: 1080px){
+    /* .navbar{
+        flex-direction: column !important;
     }
+    .navbar .logo{
+        display: flex;
+        justify-content: center;
+    } */
+    .navbar-nav{
+        flex-direction: row !important;
+        margin-left: 0% !important;
+        /* justify-content: space-between; */
+        margin-right: 0% !important;
+    }
+    .navbar-nav .nav-link{
+        padding: 20px 10px !important;
+    }
+  }
+  @media (max-width: 991.98px) {
+    /* .navbar{
+        flex-direction: column;
+    }
+    .navbar .logo{
+        display: flex;
+        justify-content: center;
+    }
+    .navbar-nav{
+        flex-direction: row !important;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+    }
+    .navbar-nav .nav-item{
+        padding: 0% rem;
+    } */
+    /* .navbar-light .navbar-nav .nav-link {
+      padding: 5px 0px;
+    } */
   }
 
   .navbar-vertical.navbar-light .navbar-nav .nav-link {

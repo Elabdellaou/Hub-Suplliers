@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(["pages.home","pages.product_detail"],ProductsHomeComposer::class);
+        view()->composer(["pages.home","pages.product_detail","pages.my_orders"],ProductsHomeComposer::class);
     }
 }

@@ -25,7 +25,7 @@
                                 data-product="{{ $item->associatedModel->id }}">
                                 <td class="align-middle d-flex">
                                     <img src="{{ Storage::url('img' . DIRECTORY_SEPARATOR . $item->associatedModel->image) }}"
-                                        alt="" style="width: 50px;">
+                                        alt="" style="width: 50px;object-fit:contain">
                                     <div class="d-flex juctify-content-center align-items-center">
                                         <span class="ml-2">{{ $item->name }}</span>
                                     </div>
@@ -34,7 +34,7 @@
                                 <td class="align-middle qty">
                                     <div class="input-group quantity mx-auto" style="width: 100px;">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-primary btn-minus">
+                                            <button class="btn btn-sm btn-primary btn-minus" title="Minus Quantity">
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
@@ -43,7 +43,7 @@
                                             class="form-control form-control-sm bg-secondary text-center"
                                             value="{{ $item->quantity }}">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-primary btn-plus">
+                                            <button class="btn btn-sm btn-primary btn-plus" title="Plus Quantity">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -51,7 +51,7 @@
                                 </td>
                                 {{-- <td class="align-middle">{{ $item->quantity*$item->price }}Dh</td> --}}
                                 <td class="align-middle">
-                                    <button class="btn btn-sm btn-danger btn_delete">
+                                    <button class="btn btn-sm btn-danger btn_delete" title="Delete">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
@@ -162,11 +162,19 @@
             // $(".total").text(parseFloat($(".unit-price").text())*newVal)
         });
         $(".btn-pass_demands").on("click", () => {
-            @if(!Auth::check())
-                toastr.warning("Please login or register.")
-                    $(".btn-login").click()
+            @if (!Auth::check())
+                // toastr.warning("Please login or register.")
+                Swal.fire(
+                    {icon:'warning',
+                    title:"Please login or register.",}
+                )
+                $(".btn-login").click()
             @elseif (count($items) == 0)
-                toastr.warning("No demands.")
+            Swal.fire(
+                    {icon:'warning',
+                    title:"No demands.",}
+                )
+                // toastr.warning("No demands.")
             @else
                 Swal.fire({
                     title: 'Are you sure?',

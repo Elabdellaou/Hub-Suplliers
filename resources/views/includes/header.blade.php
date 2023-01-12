@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg bg-light navbar-light px-0">
                 <a href="{{ route("home") }}" class="text-decoration-none ">
-                    <h1 class="m-0 display-5 ">
+                    <h1 class="m-0 display-5 logo">
                         <img width="70%" style="object-fit: contain;"
                             src="{{ Storage::url('img' . DIRECTORY_SEPARATOR . 'LOGO.webp') }}" alt=""
                             srcset="">
@@ -64,9 +64,9 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg-left" style="z-index: 1030;" aria-labelledby="dropdownMenuButton">
                                 @auth
-                                <a class="dropdown-item" href="#">{{ Auth::user()->first_name }}
+                                <a class="dropdown-item" href="{{ route("profile") }}">{{ Auth::user()->first_name }}
                                     {{ Auth::user()->last_name }}</a>
-                                    <a href="" class="dropdown-item">My orders</a>
+                                    <a href="{{ route("myOrders") }}" class="dropdown-item">My orders</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

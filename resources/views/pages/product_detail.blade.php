@@ -69,16 +69,17 @@
                     <h5 class="font-weight-semi-bold mb-4 col-6" id="qty_packaging">1</h5>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;" data-product="{{ $product->id }}" data-pieces_packaging="1" data-cases="4" data-pieces="20">
+                    <div class="input-group quantity mr-3" style="width: 130px;" data-product="{{ $product->id }}"
+                        data-pieces_packaging="1" data-cases="4" data-pieces="20">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
+                            <button class="btn btn-primary btn-minus" title="Minus Quantity">
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" readonly class="form-control bg-secondary text-center" id="qty"
+                        <input type="text" readonly disabled class="form-control bg-secondary text-center" id="qty"
                             value="1">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
+                            <button class="btn btn-primary btn-plus" title="Plus Quantity">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -188,9 +189,10 @@
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
                                     <a href="{{ route('products.detail', [$product->title]) }}"
-                                        class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
+                                        class="btn btn-sm text-dark p-0" title="Show product detail"><i class="fas fa-eye text-primary mr-1"></i>View
                                         Detail</a>
-                                    <button class="btn btn-sm text-dark p-0 btn-add-product" data-product="{{ $product->id }}"><i
+                                    <button class="btn btn-sm text-dark p-0 btn-add-product"
+                                        data-product="{{ $product->id }}" title="Add New order"><i
                                             class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
                                 </div>
                             </div>
@@ -204,16 +206,20 @@
 @endsection
 @push('scripts')
     <script>
-                btns_add_to_cart = document.querySelectorAll(".btn-add-product");
+        btns_add_to_cart = document.querySelectorAll(".btn-add-product");
         btns_add_to_cart.forEach(element => {
             element.addEventListener("click", e => {
                 e.preventDefault();
                 axios.post("/cart", {
                     "id": element.dataset.product,
                 }).then(response => {
-                    if(response.status == 200){
+                    if (response.status == 200) {
                         $(".cart_count").text(response.data.count)
-                        toastr.success("Demande successfully.");
+                        Swal.fire(
+                            {icon:'success',
+                            title:"Demande successfully.",}
+                        )
+                        // toastr.success("Demande successfully.");
                     }
                 }).catch(errors => {
                     console.log(errors)
@@ -227,9 +233,13 @@
                 "id": id,
                 "qty": qty
             }).then(response => {
-                if (response.status == 200){
+                if (response.status == 200) {
                     $(".cart_count").text(response.data.count)
-                    toastr.success("Demande successfully.");
+                    Swal.fire(
+                        {icon:'success',
+                        title:"Demande successfully.",}
+                    )
+                    // toastr.success("Demande successfully.");
                 }
             }).catch(errors => {
                 console.log(errors)
@@ -239,9 +249,9 @@
         $(".quantity button").on("click", function() {
             var button = $(this);
             var oldValue = button.parent().parent().find("input").val();
-            var  pieces_packaging= parseInt(button.parent().parent().data("pieces_packaging"));
-            var  pieces= parseInt(button.parent().parent().data("pieces"));
-            var  cases= parseInt(button.parent().parent().data("cases"));
+            var pieces_packaging = parseInt(button.parent().parent().data("pieces_packaging"));
+            var pieces = parseInt(button.parent().parent().data("pieces"));
+            var cases = parseInt(button.parent().parent().data("cases"));
             var newVal = parseInt(oldValue);
             // var newTotal=parseInt($(".total_count").text());
             if (button.hasClass("btn-plus")) {
@@ -258,9 +268,9 @@
             button.parent().parent().find("input").val(newVal);
             // $(".total_count").text(newTotal)
             $("#qty_packaging").text(newVal)
-            $("#pieces_packaging").text(pieces_packaging*newVal)
-            $("#pieces").text(pieces*newVal)
-            $("#cases").text(cases*newVal)
+            $("#pieces_packaging").text(pieces_packaging * newVal)
+            $("#pieces").text(pieces * newVal)
+            $("#cases").text(cases * newVal)
             // $(".total").text(parseFloat($(".unit-price").text())*newVal)
         });
     </script>

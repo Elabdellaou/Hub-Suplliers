@@ -21,6 +21,7 @@ class CreateCommandDetailsTable extends Migration
             $table->foreignId('product_id')->constrained();
             $table->integer('qty');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::enableForeignKeyConstraints();

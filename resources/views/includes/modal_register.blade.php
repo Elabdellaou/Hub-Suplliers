@@ -6,7 +6,7 @@ aria-hidden="true">
             <div class="d-flex justify-content-between mb-4">
                 <h5 class="modal-title" id="registerTitle">Register</h5>
                 <button type="button" style="outline: none;" class="close" data-dismiss="modal"
-                    aria-label="Close">
+                    aria-label="Close" title="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

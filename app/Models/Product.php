@@ -34,9 +34,9 @@ class Product extends Model
         'price' => 'decimal:2',
     ];
 
-    public function commands()
+    public function details()
     {
-        return $this->belongsToMany(Commands::class,"commands_detail");
+        return $this->hasMany(CommandDetail::class);
     }
     public function images(){
         return $this->hasMany(Image::class);
