@@ -39,9 +39,17 @@ class HomeController extends Controller
         if (count(User::where("id", "<>", $user->id)->where("email", $req->email)->get()) != 0)
             return redirect()->back()->with("error", "Email already exist.");
         $data=['first_name'=>$req->first_name,'company'=>$req->company,'last_name'=>$req->last_name,'email'=>$req->email,'phone'=>$req->phone];
-        if ($req->password !== null)
-            $data["password"]=Hash::make($req->password);
+        // if ($req->password !== null)
+        //     $data["password"]=Hash::make($req->password);
         $user->update($data);
         return redirect()->back()->with("success", "Successfully Updated Profile.");
+    }
+    public function updatePassword(Request $req){
+        $data=$req->validate([
+            'password'=>['required','string','min:8','confirmed']
+        ]);
+        $data['password']=Hash::make($data['password']);
+        auth()->user()->update($data);
+        return redirect()->back()->with("success", "Successfully Updated Password.");
     }
 }

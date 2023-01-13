@@ -37,6 +37,7 @@ Route::middleware("auth")->group(function(){
     Route::get('my-orders',[CommandController::class,'myOrders'])->name("myOrders");
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
     Route::put('/profile', [HomeController::class, 'update'])->name('profile.update');
+    Route::put('/update/password', [HomeController::class, 'updatePassword'])->name('password.update');
     // Route::delete("delete_orders_completed",[CommandController::class,"allDeleteCompleted"])->name("delete.all.orders.completed");
     // Route::delete("delete_orders_processing",[CommandController::class,"allDeleteProcessing"])->name("delete.all.orders.processing");
     // Route::delete("detail/{id}",[CommandController::class,"delete"])->name("order.delete");

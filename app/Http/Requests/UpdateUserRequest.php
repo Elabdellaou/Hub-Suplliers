@@ -26,10 +26,10 @@ class UpdateUserRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255',"min:9",'regex:/^[0-9]+$/'],
+            'phone' => ['required', 'string', 'max:255',"min:9",'regex:/^[0-9\s]*$/'],
             'company' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password'=>['nullable','string','min:8']
+            // 'password'=>['nullable','string','min:8']
         ];
     }
 }

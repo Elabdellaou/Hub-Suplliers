@@ -73,6 +73,36 @@
                                     @enderror
                                 </div>
                             </div>
+                            {{-- <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password"  class="form-control @error('password') is-invalid @enderror " id="password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first("password") }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div> --}}
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary border-0 mb-2 mt-3"
+                                style="outline: none;border-radius:5px;">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card border mt-5" style="border-radius: 7px;">
+                    <div class="card-header bg-primary text-white"
+                        style="border-top-left-radius: 7px;border-top-right-radius:7px;">Update Password
+                        {{-- <p id="mode" class="text-white" style="cursor: pointer;">
+                            <i class="far fa-edit" title="Edit"></i>
+                            <i class="fas fa-times d-none" title="Close"></i>
+                        </p> --}}
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('password.update')}}" class="row" method="post">
+                            @method("put")
+                            @csrf
                             <div class="col-12 col-lg-6">
                                 <div class="form-group">
                                     <label for="password">Password</label>
@@ -80,6 +110,17 @@
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first("password") }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="password">Password Confirmation</label>
+                                    <input type="password" name="password_confirmation"  class="form-control @error('password_confirmation') is-invalid @enderror " id="password_confirmation">
+                                    @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first("password_confirmation") }}</strong>
                                     </span>
                                     @enderror
                                 </div>
